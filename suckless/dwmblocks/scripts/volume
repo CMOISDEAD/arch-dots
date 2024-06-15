@@ -1,0 +1,10 @@
+#!/bin/sh
+
+volume=$(pamixer --get-volume)
+mute=$(pamixer --get-mute)
+
+if [ "$mute" != false ]; then
+    echo "${volume}% 𐄂"
+else
+    echo "${volume}%"
+fi

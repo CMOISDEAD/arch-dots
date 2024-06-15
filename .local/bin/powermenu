@@ -1,0 +1,20 @@
+#!/bin/sh
+
+bg="$1"
+fg="$2"
+ac="$3"
+font="$4"
+
+case "$(
+	echo -e "Shutdown\nRestart\nLogout\nSuspend\nLock" | dmenu 
+        )" in
+    Shutdown) exec systemctl poweroff ;;
+    Restart) exec systemctl reboot ;;
+    Logout) kill -HUP "$XDG_SESSION_PID" ;;
+    Suspend)
+        mpc -q pause
+        amixer set Master mute
+        exec systemctl suspend
+        ;;
+    Lock) slock ;;
+esac

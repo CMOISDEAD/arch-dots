@@ -1,0 +1,12 @@
+#! /bin/zsh
+
+# screenshots path
+image_screenshot="$HOME/Pictures/Screenshots/$(date +%s).png"
+
+if [[ $1 = "-s" ]]; then
+    maim -s "$image_screenshot" && xclip -selection clipboard -t image/png "$image_screenshot"
+else
+    maim "$image_screenshot" && xclip -selection clipboard -t image/png "$image_screenshot"
+fi
+
+notify-send "Screenshot" "Saved on ~/Pictures/Screenshots/"

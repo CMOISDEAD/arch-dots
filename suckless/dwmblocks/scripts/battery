@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# estimated="$(acpi -b | grep -E 'remaining|until' | awk '{print $5}')"
+cap="$(cat /sys/class/power_supply/BAT1/capacity)"
+stat="$(cat /sys/class/power_supply/BAT1/status)"
+
+# check the current status of battery
+if [ "$stat" = "Charging" ]; then
+    icon="⇡"
+elif [ "$stat" = "Discharging" ]; then
+    icon="⇣"
+else
+    icon="*"
+fi
+
+echo "$cap% $icon"

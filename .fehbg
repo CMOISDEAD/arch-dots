@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-fill '/home/camilo/Pictures/wallpapers/painting/landscapes/1705259123572260.jpg' 
